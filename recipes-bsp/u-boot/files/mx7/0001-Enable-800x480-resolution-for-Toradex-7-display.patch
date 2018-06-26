@@ -1,0 +1,80 @@
+From 99d6f72edd230b536cd0c6429bd23cd7e4f2a0ec Mon Sep 17 00:00:00 2001
+From: Alf-Rune <alf.rune@northern.tech>
+Date: Mon, 2 Jul 2018 21:02:43 +0200
+Subject: [PATCH] Enable 800x480 resolution for Toradex 7" display
+
+This patch enables the more uncommon resolution 800x480 of the Toradex
+multi-touch display (Product #12061000)
+
+Signed-off-by: Alf-Rune <alf.rune@northern.tech>
+---
+ include/configs/colibri-imx6ull.h   | 4 ++--
+ include/configs/colibri_imx6.h      | 2 +-
+ include/configs/colibri_imx7.h      | 4 ++--
+ include/configs/colibri_imx7_emmc.h | 4 ++--
+ 4 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/include/configs/colibri-imx6ull.h b/include/configs/colibri-imx6ull.h
+index 7c79b03f92..50fb2b4093 100644
+--- a/include/configs/colibri-imx6ull.h
++++ b/include/configs/colibri-imx6ull.h
+@@ -147,9 +147,9 @@
+ 		"fatload ${interface} 0:1 ${loadaddr} " \
+ 		"${board}/flash_blk.img && source ${loadaddr}\0" \
+ 	"splashpos=m,m\0" \
+-	"videomode=video=ctfb:x:640,y:480,depth:18,pclk:39722,le:48,ri:16,up:33,lo:10,hs:96,vs:2,sync:0,vmode:0\0" \
++	"videomode=video=ctfb:x:800,y:480,depth:18,pclk:39722,le:48,ri:16,up:33,lo:10,hs:96,vs:2,sync:0,vmode:0\0" \
+ 	"updlevel=2\0" \
+-	"vidargs=video=mxsfb:640x480M-16@60"
++	"vidargs=video=mxsfb:800x480M-16@60"
+ 
+ /* Miscellaneous configurable options */
+ #define CONFIG_SYS_LONGHELP
+diff --git a/include/configs/colibri_imx6.h b/include/configs/colibri_imx6.h
+index f1fd5b422e..1d434e9f53 100644
+--- a/include/configs/colibri_imx6.h
++++ b/include/configs/colibri_imx6.h
+@@ -259,7 +259,7 @@
+ 		"load ${interface} ${drive}:1 ${loadaddr} flash_blk.img && " \
+ 		"source ${loadaddr}\0" \
+ 	"splashpos=m,m\0" \
+-	"vidargs=video=mxcfb0:dev=lcd,640x480M@60,if=RGB666 " \
++	"vidargs=video=mxcfb0:dev=lcd,800x480M@60,if=RGB666 " \
+ 		"video=mxcfb1:off fbmem=8M\0"
+ 
+ /* Miscellaneous configurable options */
+diff --git a/include/configs/colibri_imx7.h b/include/configs/colibri_imx7.h
+index 9e99473838..f6482dd37e 100644
+--- a/include/configs/colibri_imx7.h
++++ b/include/configs/colibri_imx7.h
+@@ -148,9 +148,9 @@
+ 		"fatload ${interface} 0:1 ${loadaddr} " \
+ 		"${board}/flash_blk.img && source ${loadaddr}\0" \
+ 	"splashpos=m,m\0" \
+-	"videomode=video=ctfb:x:640,y:480,depth:18,pclk:39722,le:48,ri:16,up:33,lo:10,hs:96,vs:2,sync:0,vmode:0\0" \
++	"videomode=video=ctfb:x:800,y:480,depth:18,pclk:39722,le:48,ri:16,up:33,lo:10,hs:96,vs:2,sync:0,vmode:0\0" \
+ 	"updlevel=2\0" \
+-	"vidargs=video=mxsfb:640x480M-16@60"
++	"vidargs=video=mxsfb:800x480M-16@60"
+ 
+ /* Miscellaneous configurable options */
+ #define CONFIG_SYS_LONGHELP
+diff --git a/include/configs/colibri_imx7_emmc.h b/include/configs/colibri_imx7_emmc.h
+index 568a52abc0..6537215c93 100644
+--- a/include/configs/colibri_imx7_emmc.h
++++ b/include/configs/colibri_imx7_emmc.h
+@@ -147,9 +147,9 @@
+ 		"fatload ${interface} 0:1 ${loadaddr} " \
+ 		"${board}/flash_blk.img && source ${loadaddr}\0" \
+ 	"splashpos=m,m\0" \
+-	"videomode=video=ctfb:x:640,y:480,depth:18,pclk:39722,le:48,ri:16,up:33,lo:10,hs:96,vs:2,sync:0,vmode:0\0" \
++	"videomode=video=ctfb:x:800,y:480,depth:18,pclk:39722,le:48,ri:16,up:33,lo:10,hs:96,vs:2,sync:0,vmode:0\0" \
+ 	"updlevel=2\0" \
+-	"vidargs=video=mxsfb:640x480M-16@60"
++	"vidargs=video=mxsfb:800x480M-16@60"
+ 
+ /* Miscellaneous configurable options */
+ #define CONFIG_SYS_LONGHELP
+-- 
+2.17.1
+

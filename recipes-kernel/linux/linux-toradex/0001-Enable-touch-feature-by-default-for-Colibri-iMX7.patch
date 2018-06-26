@@ -1,0 +1,55 @@
+From abfb485ad706185d8a912127b927eab4c31cc8bc Mon Sep 17 00:00:00 2001
+From: Alf-Rune <alf.rune@northern.tech>
+Date: Wed, 4 Jul 2018 13:10:58 +0200
+Subject: [PATCH] Enable touch feature by default for Colibri iMX7
+
+Signed-off-by: Alf-Rune <alf.rune@northern.tech>
+---
+ arch/arm/boot/dts/imx7-colibri-eval-v3.dtsi | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/arch/arm/boot/dts/imx7-colibri-eval-v3.dtsi b/arch/arm/boot/dts/imx7-colibri-eval-v3.dtsi
+index d80a003228c7..ad2202d3dedc 100644
+--- a/arch/arm/boot/dts/imx7-colibri-eval-v3.dtsi
++++ b/arch/arm/boot/dts/imx7-colibri-eval-v3.dtsi
+@@ -160,13 +160,11 @@
+ 	/* Atmel maxtouch controller */
+ 	atmel_mxt_ts: atmel_mxt_ts@4a {
+ 		compatible = "atmel,maxtouch";
+-		pinctrl-names = "default";
+ 		pinctrl-0 = <&pinctrl_gpiotouch>;
+ 		reg = <0x4a>;
+ 		interrupt-parent = <&gpio1>;
+ 		interrupts = <9 IRQ_TYPE_EDGE_FALLING>; /* SODIMM 28 */
+-		reset-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>; /* SODIMM 30 */
+-		status = "disabled";
++		status = "okay";
+ 	};
+ 
+ 	touch: touchrevf0710a@10 {
+@@ -314,11 +312,11 @@
+ /* the PCAPs use SODIMM 28/30, also used for PWM<B>, PWM<C>, aka pwm2, pwm3.
+    so if you enable one of the PCAP controllers disable the pwms */
+ &pwm2 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &pwm3 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &pwm4 {
+@@ -376,7 +374,7 @@
+ 	pinctrl_gpiotouch: touchgpios {
+ 		fsl,pins = <
+ 			MX7D_PAD_GPIO1_IO09__GPIO1_IO9		0x74
+-			MX7D_PAD_GPIO1_IO10__GPIO1_IO10		0x14
++			MX7D_PAD_GPIO1_IO10__GPIO1_IO10		0x74
+ 		>;
+ 	};
+ };
+-- 
+2.17.1
+
